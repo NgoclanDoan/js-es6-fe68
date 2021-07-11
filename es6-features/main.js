@@ -234,12 +234,140 @@
 // const calcSumWithoutRestParam = (num1, num2, num3) => console.log(num1 + num2 + num3);
 // calcSum(1, 2, 3);
 
-const calcSumWithRestParam = (...nums) => {
-    console.log(nums);
-    let sum = 0;
-    nums.forEach((num) => {
-        sum += num;
-    });
-    console.log(sum);
-};
-calcSum(1, 2, 3, 4, 5, 6, 7);
+// const calcSumWithRestParam = (...nums) => {
+//     console.log(nums);
+//     let sum = 0;
+//     nums.forEach((num) => {
+//         sum += num;
+//     });
+//     console.log(sum);
+// };
+// calcSum(1, 2, 3, 4, 5, 6, 7);
+
+/**
+ * * Spread operator
+ * - Copy Array
+ * - Copy Object
+ * - Tham trị (các kiểu dữ liệu nguyên thủy) .vs tham chiếu (array, object)
+ * - Merge array
+ * - Thêm 1 or nhiều phần tử vào mảng
+ * - Sử dụng array như danh sách các tham số của function
+ */
+// const people = ['lan', 'quyen', 'vy'];
+// // console.log(people[0], people[1], people[2]);
+// console.log(...people);
+
+//Copy array
+// let nums1 = [1,2,3];
+// let nums2 = nums1;
+// nums2.push(4);
+// console.log(nums1);//! num1, num2 => [1,2,3,4]
+// console.log(nums2);//! num1, num2 => [1,2,3,4]
+//C1: use json => array to string
+// let nums1 = [1, 2, 3];
+// let nums2 = JSON.parse(JSON.stringify(nums1));
+// nums2.push(4);
+// console.log(nums1);
+// console.log(nums2);
+//C2: use spread operator
+// const nums1 = [1, 2, 3];
+// const nums2 = [1, ...nums1, 4, 5, 6];
+// nums2.push(4);
+// console.log(nums1);
+// console.log(nums2);
+
+//Merge Array
+// const nums1 = [1, 2, 3];
+// const nums2 = [4, 5, 6];
+// //C1: use concat()
+// // const nums3 = nums1.concat(nums2);
+// //C2
+// const nums3 = [...nums1, ...nums2];
+
+//Copy object, các phần tử mới sẽ được thêm vào, và các phần tử cũ được đè giá trị mới vào.
+// let obj1 = {
+//     a: 'a',
+//     b: 'b',
+// };
+// let obj2 = { ...obj1, d: 'd', a: '_a' };
+// obj2.c = 'c';
+// console.log(obj1);
+// console.log(obj2);
+
+//Merge object
+// let obj1 = {
+//     a: 'a',
+//     b: 'b',
+// };
+// let obj2 = {
+//     c: 'c',
+//     d: 'd',
+// };
+// // const obj3 = Object.assign(obj1,obj2);
+// const obj3 = {...obj1,...obj2};
+// console.log(obj3);
+
+// const users = ['tay','y','vy'];
+// // const showUsers = (user1, user2, user3) => console.log(user1, user2, user3);
+// const showUsers = (...users) => {
+//     users.forEach(user =>{
+//         console.log(user);
+//     })
+// } //!Rest param
+// // showUsers(user[0],user[1],user[2]);
+// showUsers(...users); //! spread operator
+
+/**
+ * Module
+ * - import:
+ * - export
+ */
+// import { getLocalStorage, setLocalStorage } from './utils.js';
+// // import * as utils from './utils.js'
+// // import default => tên object có thể được thay đổi
+// import SinhVienDefault from './utils.js';
+
+// import SinhVienDefault,{ getLocalStorage, setLocalStorage } from './utils.js';
+//
+// const sinhVien = new SinhVienDefault('lan','haha');
+// console.log(sinhVien);
+//
+// getLocalStorage();
+// setLocalStorage();
+
+/**
+ * * Class
+ * - Bản chất class vẫn là 1 function
+ */
+//Class expression
+// const People = class {
+//
+// }
+
+//declaration
+// class People {
+//     //Định nghĩa các tham số đầu vào của class
+//     constructor(fullName, className, birthYear) {
+//         this.fullName = fullName;
+//         this.className = className;
+//         this.birthYear = birthYear;
+//     }
+//     calcAge() {
+//         console.log(2021 - this.birthYear);
+//     }
+// }
+// const tay = new People('chu ho tay', 'FE68', 2000);
+// console.log(tay);
+// console.log(tay.__proto__ === People.prototype); //true
+
+//Kế thừa trong class: extends kế thừa phương thức và thuộc tính của lớp cha
+// class ChuyenXeNoiThanh extends ChuyenXe {
+//     constructor(soXe, mauXE, taiXe, soTuyen) {
+//         //super: gọi lại phương thức contructor của lớp cha
+//         super(soXe, mauXE, taiXe);
+//         this.soTuyen = soTuyen;
+//     }
+//     tinhDoanhThu() {
+//         console.log('tinh doanh thu chung');
+//     }
+// }
